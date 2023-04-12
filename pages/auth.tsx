@@ -23,7 +23,7 @@ const Auth = () => {
         } catch (error) {
             console.log(error);
         }
-    }, []);
+    }, [email, name, password]);
 
     return (
         <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
@@ -50,6 +50,7 @@ const Auth = () => {
                                 onChange={(ev:any) => setEmail(ev.target.value)}
                                 id="email"
                                 value={email}
+                                type="email"
                             />
 
                             <Input
@@ -57,9 +58,10 @@ const Auth = () => {
                                 onChange={(ev:any) => setPassword(ev.target.value)}
                                 id="password"
                                 value={password}
+                                type="password"
                             />
                         </div>
-                        <button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+                        <button onClick={register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
                             {variant === 'login' ? 'Login' : 'Sign up'}
                         </button>
                         <p className="text-neutral-500 mt-12">
