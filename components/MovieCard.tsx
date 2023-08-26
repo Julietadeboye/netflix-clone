@@ -48,6 +48,6 @@ const MovieCard: React.FC<MovieCardProps> = ({data}) => {
         </div>
     </div>
   )
-}
+};
 
 export default MovieCard;

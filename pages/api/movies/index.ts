@@ -21,4 +21,4 @@
         console.log(error);
         return res.status(400).end();
     }
-}
+};

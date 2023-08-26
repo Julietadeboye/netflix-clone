@@ -26,6 +26,6 @@ const MovieList: React.FC<MovieListProps> = ({data, title}) => {
         </div>
     </div>
   )
-}
+};
 
-export default MovieList
+export default MovieList;
