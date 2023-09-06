@@ -1,30 +1,32 @@
 import { NextPageContext } from "next";
-import { getSession } from "next-auth/react";
+import { getSession, useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
 
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { useRouter } from "next/router";
 
-export async function getServerSideProps(context: NextPageContext) {
-    const session = await getSession(context);
-  
-    if (!session) {
-      return {
-        redirect: {
-          destination: '/auth',
-          permanent: false,
-        }
-      }
-    }
-  
-    return {
-      props: {}
-    }
-  }
+// export async function getServerSideProps(context: NextPageContext) {
+//   const session = await useSession();
+
+//   if (!session) {
+//     return {
+//       redirect: {
+//         destination: '/auth',
+//         permanent: false,
+//       }
+//     }
+//   }
+
+//   return {
+//     props: {}
+//   }
+// }
 
 const Profiles = () => {
+  const { data: session } = useSession()
     const router = useRouter();
     const {data: user} = useCurrentUser();
-
+  if (!session) return <h1>Not Signed In</h1>
     return (
         <div className="flex items-center h-full justify-center">
             <div className="flex flex-col">
